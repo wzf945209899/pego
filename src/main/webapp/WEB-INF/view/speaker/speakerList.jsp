@@ -13,12 +13,12 @@
     <title>hello world</title>
 
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/jquery-1.12.4.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
     <style>
     	.body {
 				    background-color: #fff;
@@ -47,14 +47,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
           <ul class="nav navbar-nav">
-            <li><a  href="${pageContext.request.contextPath }/video/videoList.action"">视频管理</a></li>
+            <li><a  href="${pageContext.request.contextPath }/admin/video/videoList.action"">视频管理</a></li>
             <li class="active"><a href="#">主讲人管理</a></li>
-            <li><a href="${pageContext.request.contextPath }/course/courseList.action"">课程管理</a></li>
-            <li><a href="${pageContext.request.contextPath }/course/seeCourseTimes.action">统计分析</a></li>
+            <li><a href="${pageContext.request.contextPath }/admin/course/courseList.action"">课程管理</a></li>
+            <li><a href="${pageContext.request.contextPath }/admin/course/seeCourseTimes.action">统计分析</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right">
             		  <li><a href="#">${user.loginName }</a></li>
-            		  <li><a href="${pageContext.request.contextPath }/index.jsp" onclick="" target="_blank" class="glyphicon glyphicon-log-out"></a></li>
+            		  <li><a href="${pageContext.request.contextPath }/admin/user/indexout.action" onclick="" target="_blank" class="glyphicon glyphicon-log-out"></a></li>
          		</ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -65,9 +65,9 @@
 	<!-- *****************************************************************-->
 	<div class="body">
 		   <div style="width: 60%">
-	 <a class="btn btn-primary va-bottom" href="${pageContext.request.contextPath }/speaker/addSpeaker.action">添加主讲人</a>&nbsp&nbsp
+	 <a class="btn btn-primary va-bottom" href="${pageContext.request.contextPath }/admin/speaker/addSpeaker.action">添加主讲人</a>&nbsp&nbsp
 	     <div style="float: right;">
-	    <form action="${pageContext.request.contextPath }/speaker/speakerList.action">
+	    <form action="${pageContext.request.contextPath }/admin/speaker/speakerList.action">
 	      	名称<input type="text" placeholder="主讲人名称" name="speakerName" value="${speakerName }">&nbsp&nbsp
 			职位<input type="text" placeholder="主讲人职位" name="speakerJob" value="${speakerJob }">&nbsp&nbsp
 			<input type="submit" value="搜索" width="100px" class="btn btn-primary va-bottom">
@@ -96,8 +96,8 @@
           <td>${mm.speakerName }</td>
           <td>${mm.speakerJob }</td>
           <td>${mm.speakerDescr }</td>
-          <td><a class="glyphicon glyphicon-edit"  href="${pageContext.request.contextPath }/speaker/updateSepaker.action?id=${mm.id}" ></a></td>
-         <%--  <td><a class="glyphicon glyphicon-trash" href="${pageContext.request.contextPath }/speaker/deleteSepaker.action?id=${mm.id}"></a></td> --%>
+          <td><a class="glyphicon glyphicon-edit"  href="${pageContext.request.contextPath }/admin/speaker/updateSepaker.action?id=${mm.id}" ></a></td>
+         <%--  <td><a class="glyphicon glyphicon-trash" href="${pageContext.request.contextPath }/admin/speaker/deleteSepaker.action?id=${mm.id}"></a></td> --%>
        <td>
   				<a class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#myModal${mm.id }" ></a>
 					<!-- Modal -->		
@@ -111,7 +111,7 @@
                           <div class="modal-body">确认删除么</div>
       						<div class="modal-footer">
        							 <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
-		                     <a class="btn btn-primary" href="${pageContext.request.contextPath }/video/deleteVideo.action?id=${mm.id }" />确定</a>
+		                     <a class="btn btn-primary" href="${pageContext.request.contextPath }/admin/video/deleteVideo.action?id=${mm.id }" />确定</a>
 						      </div>
 						    </div>
 						  </div>
@@ -127,7 +127,7 @@
  <!-- **********************************************************************--> 
 		<div class="body">
   		<div style="width: 60%">
-  		        <lyb:page url="${pageContext.request.contextPath }/speaker/speakerList.action"></lyb:page>
+  		        <lyb:page url="${pageContext.request.contextPath }/admin/speaker/speakerList.action"></lyb:page>
         </div>
   	  </div>    
   </body>

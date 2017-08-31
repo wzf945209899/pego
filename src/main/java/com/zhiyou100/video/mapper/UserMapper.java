@@ -27,4 +27,23 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+	User selectByemail(@Param("email")String email, @Param("password")String password);
+
+	User findUserByEmail(String email);
+
+	void updateCaptchaByEmail(@Param("email")String email,@Param("captcha") String captcha);
+
+	User selectByEmailAndCaptcha(@Param("email")String email, @Param("captcha")String captcha);
+
+	void updatePWD(@Param("password")String password,@Param("email") String email);
+
+	void updatePwd22(@Param("newPassword2")String newPassword2, @Param("email")String email, @Param("oldPassword")String oldPassword);
+
+	
+	
+
+
 }
+
+	

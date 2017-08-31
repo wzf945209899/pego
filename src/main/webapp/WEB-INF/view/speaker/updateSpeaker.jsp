@@ -12,12 +12,12 @@
     <title>hello world</title>
 
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/jquery-1.12.4.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
     <style>
     	
     		.body {
@@ -48,9 +48,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
           <ul class="nav navbar-nav">
-            <li><a class="navbar-brand" href="${pageContext.request.contextPath }/video/videoList.action">视频管理</a></li>
+            <li><a class="navbar-brand" href="${pageContext.request.contextPath }/admin/video/videoList.action">视频管理</a></li>
             <li class="active"><a href="#">主讲人管理</a></li>
-            <li><a href="${pageContext.request.contextPath }/course/courseList.action">课程管理</a></li>
+            <li><a href="${pageContext.request.contextPath }/admin/course/courseList.action">课程管理</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -60,7 +60,7 @@
     </div>
          <div class="body">
          	<div style="width: 60%;">
-			  <form class="form-horizontal" method="post" action="${pageContext.request.contextPath }/speaker/updateSepaker.action">
+			  <form class="form-horizontal" method="post" action="${pageContext.request.contextPath }/admin/speaker/updateSepaker.action">
 			  <div class="form-group">
 			    <label for="inputEmail3" class="col-sm-2 control-label">名字</label>
 			    <div class="col-sm-10">

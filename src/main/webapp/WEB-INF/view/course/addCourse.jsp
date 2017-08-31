@@ -2,6 +2,7 @@
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 		<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 		<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+		
 		<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
@@ -12,12 +13,12 @@
 		    <title>hello world</title>
 		
 		    <!-- Bootstrap -->
-		    <link href="../css/bootstrap.min.css" rel="stylesheet">
+		    <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
 		
 		    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		    <script src="../js/jquery-1.12.4.min.js"></script>
+		    <script src="${pageContext.request.contextPath }/js/jquery-1.12.4.min.js"></script>
 		    <!-- Include all compiled plugins (below), or include individual files as needed -->
-		    <script src="../js/bootstrap.min.js"></script>
+		    <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 		    <style>
 		    		.body {
 						    background-color: #fff;
@@ -45,8 +46,8 @@
 		        <!-- Collect the nav links, forms, and other content for toggling -->
 		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
 		          <ul class="nav navbar-nav">
-		            <li ><a href="${pageContext.request.contextPath }/video/videoList.action">视频管理</a></li>
-		            <li ><a href="${pageContext.request.contextPath }/speaker/speakerList.action">主讲人管理</a></li>
+		            <li ><a href="${pageContext.request.contextPath }/admin/video/videoList.action">视频管理</a></li>
+		            <li ><a href="${pageContext.request.contextPath }/admin/speaker/speakerList.action">主讲人管理</a></li>
 		            <li class="active"><a href="#">课程管理</a></li>
 		          </ul>
 		        </div><!-- /.navbar-collapse -->
@@ -57,7 +58,7 @@
 		    </div>
 		       <div class="body">
 		         	<div style="width: 60%;">
-					  <form class="form-horizontal" action="${pageContext.request.contextPath }/course/addCourse.action" method="post">
+					  <form class="form-horizontal" action="${pageContext.request.contextPath }/admin/course/addCourse.action" method="post">
 					 
 					  <div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 control-label">所属学科</label>

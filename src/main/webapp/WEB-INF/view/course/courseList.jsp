@@ -14,12 +14,12 @@
     <title>hello world</title>
 
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/jquery-1.12.4.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
     <style>
     	.body {
 				    background-color: #fff;
@@ -48,14 +48,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
           <ul class="nav navbar-nav">
-            <li><a href="${pageContext.request.contextPath }/video/videoList.action">视频管理</a></li>
-            <li><a href="${pageContext.request.contextPath }/speaker/speakerList.action">主讲人管理</a></li>
+            <li><a href="${pageContext.request.contextPath }/admin/video/videoList.action">视频管理</a></li>
+            <li><a href="${pageContext.request.contextPath }/admin/speaker/speakerList.action">主讲人管理</a></li>
             <li class="active"><a href="#">课程管理</a></li>
-            <li><a href="${pageContext.request.contextPath }/course/seeCourseTimes.action">统计分析</a></li>
+            <li><a href="${pageContext.request.contextPath }/admin/course/seeCourseTimes.action">统计分析</a></li>
              </ul>
                <ul class="nav navbar-nav navbar-right">
             		  <li><a href="#">${user.loginName }</a></li>
-            		  <li><a href="${pageContext.request.contextPath }/index.jsp" onclick="" target="_blank" class="glyphicon glyphicon-log-out"></a></li>
+            		  <li><a href="${pageContext.request.contextPath }/admin/user/indexout.action" onclick="" target="_blank" class="glyphicon glyphicon-log-out"></a></li>
                  </li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -68,7 +68,7 @@
 	<!-- *****************************************************************-->
 	<div class="body" >
 		<div style="width: 60%;">
-	 <a class="btn btn-primary va-bottom" href="${pageContext.request.contextPath }/course/addCourse.action">添加课程</a>
+	 <a class="btn btn-primary va-bottom" href="${pageContext.request.contextPath }/admin/course/addCourse.action">添加课程</a>
 	 	</div>
     </div>  
    <!-- ***************************************************************-->
@@ -92,8 +92,8 @@
           <td>${mm.courseName }</td>
           <td>${mm.subjectName }</td>
           <td>${mm.courseDescr }</td>
-          <td><a class="glyphicon glyphicon-edit"  href="${pageContext.request.contextPath }/course/updateCourse.action?id=${mm.id}"></a></td>
-         <%--  <td><a class="glyphicon glyphicon-trash" href="${pageContext.request.contextPath }/course/deleteCourse.action?id=${mm.id}"></a></td> --%>
+          <td><a class="glyphicon glyphicon-edit"  href="${pageContext.request.contextPath }/admin/course/updateCourse.action?id=${mm.id}"></a></td>
+         <%--  <td><a class="glyphicon glyphicon-trash" href="${pageContext.request.contextPath }/admin/course/deleteCourse.action?id=${mm.id}"></a></td> --%>
       <td>
   				<a class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#myModal${mm.id }" ></a>
 					<!-- Modal -->		
@@ -107,7 +107,7 @@
                           <div class="modal-body">确认删除么</div>
       						<div class="modal-footer">
        							 <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
-		                     <a class="btn btn-primary" href="${pageContext.request.contextPath }/video/deleteVideo.action?id=${mm.id }" />确定</a>
+		                     <a class="btn btn-primary" href="${pageContext.request.contextPath }/admin/video/deleteVideo.action?id=${mm.id }" />确定</a>
 						      </div>
 						    </div>
 						  </div>
@@ -123,7 +123,7 @@
  <!-- **********************************************************************--> 
 	<div class="body">
   		<div style="width: 60%">
-  		    <lyb:page url="${pageContext.request.contextPath }/course/courseList.action"></lyb:page>
+  		    <lyb:page url="${pageContext.request.contextPath }/admin/course/courseList.action"></lyb:page>
         </div>
   	</div>    
   </body>

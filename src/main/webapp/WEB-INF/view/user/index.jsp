@@ -10,9 +10,9 @@
 <title>登录系统</title>
 
 <!-- Bootstrap -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<script src="../js/jquery-1.12.4.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+<link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath }/js/jquery-1.12.4.min.js"></script>
+<script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 <style>
 * {
 	box-sizing: border-box;
@@ -92,9 +92,9 @@ input[type=submit] {
 
 </head>
 <body>
- <form action="<c:url value="/user/login.action"/>" method="post">
+ <form action="<c:url value="/admin/user/login.action"/>" method="post">
 	 <div class="login">
-		<img src="../img/logo.png" alt="智游">
+		<img src="${pageContext.request.contextPath }/img/logo.png" alt="智游">
 		<div>
 			<input type="text" name="loginName" placeholder="用户名" value="admin">
 		</div>

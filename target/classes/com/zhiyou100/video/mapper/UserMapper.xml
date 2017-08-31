@@ -320,4 +320,28 @@
       captcha = #{captcha,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectByemail" resultMap="BaseResultMap">
+  select * from user where email = #{email} and password = #{password}
+  </select>
+  
+  <select id="findUserByEmail" resultMap="BaseResultMap" parameterType="string">
+  select * from user where email = #{email} 
+  </select>
+  
+  <update id="updateCaptchaByEmail">
+  update user set captcha = #{captcha} where email = #{email}
+  
+  </update>
+  
+  <select id="selectByEmailAndCaptcha" resultMap="BaseResultMap">
+  select * from user where email = #{email} and captcha = #{captcha}
+  </select>
+  <update id="updatePWD">
+  update user set password = #{password} where email = #{email}
+  </update>
+  
+  <update id="updatePwd22">
+  update user set password = #{oldPassword} where email = #{email} and password = #{newPassword2}
+  </update>
 </mapper>

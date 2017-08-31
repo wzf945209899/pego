@@ -18,11 +18,31 @@
 </bean>
 
  <mvc:interceptors>
+      
+ 
+ 
+     <mvc:interceptor>
+		<mvc:mapping path="/admin/**"/>
+		<!-- <mvc:exclude-mapping path="/admin/user/index.action"/> -->
+		<mvc:exclude-mapping path="/admin/user/login.action"/>
+		<bean class="com.zhiyou100.video.web.interceptor.AdminInterceptor"></bean>
+	</mvc:interceptor> 
+	
 	<mvc:interceptor>
-		<mvc:mapping path="/**"/>
-		<mvc:exclude-mapping path="/user/login.action"/>
-		<bean class="com.zhiyou100.video.utils.CustomInterceptor"></bean>
+		<mvc:mapping path="/front/**"/>
+		<!-- <mvc:exclude-mapping path="/user/index.action"/>
+		<mvc:exclude-mapping path="/user/login.action"/> -->
+		<mvc:exclude-mapping path="/front/index.action"/>
+		<mvc:exclude-mapping path="/front/user/login.action"/> 
+		<mvc:exclude-mapping path="/front/user/regist.action"/> 
+		<mvc:exclude-mapping path="/front/forgetpwd.action"/> 
+		<mvc:exclude-mapping path="/front/sendemail.action"/> 
+		<mvc:exclude-mapping path="/front/resetpwd.action"/> 
+		<bean class="com.zhiyou100.video.web.interceptor.FrontInterceptor"></bean>
 	</mvc:interceptor>
+	
+	
+	 
 </mvc:interceptors> 
 
   

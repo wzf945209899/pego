@@ -234,6 +234,12 @@
   select c.*,subject_name from course c left join subject s on c.subject_id = s.id limit #{page},10
   </select>
   
- 
+    
+  
+  
+ <!--  <select id="selectCourse" parameterType="int" resultMap="BaseResultMap1">
+  select c.*,v.* from course c left join video v on c.id = v.course_id having subject_id = #{subjectId} 
+  </select> -->
+  <!-- select c.*,v.* from course c left join video v on c.id = v.course_id having subject_id = 1; -->
   
 </mapper>

@@ -7,13 +7,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
    		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title></title>
-		<link href="../css/bootstrap.min.css" rel="stylesheet">
-	 	<script src="../js/jquery-1.12.4.min.js"></script>
-   	 	<script src="../js/bootstrap.min.js"></script>
+		<link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
+	 	<script src="${pageContext.request.contextPath }/js/jquery-1.12.4.min.js"></script>
+   	 	<script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+   	 	<script src="${pageContext.request.contextPath }/js/jquery-confirm.js"></script>
+   	 	<link href="${pageContext.request.contextPath }/js/jquery-confirm.css" rel="stylesheet">
     <script type="text/javascript">
      function selectAll(a){
     	 var arr = document.getElementsByName("box");
@@ -23,7 +24,6 @@
     			 arr[i].checked=a.checked;
     			 brr[i] = arr[i].value;
     	 }
-    	   //  alert(arr.length);
     	     span.innerHTML=arr.length;
 	} 
      function deleteall() {
@@ -36,6 +36,14 @@
     				
     		 }
     	 }
+    	 
+    	//  **********************************
+    	 if(j==$("input[name=box]").length){
+    		 $("#box1").prop("checked",true);
+    	 }else{
+    		 $("#box1").prop("checked",false);
+    	 } 
+    	//************************************
     	 var span = document.getElementById("span");
     	 span.innerHTML= j;       
 	  } 
@@ -50,12 +58,40 @@
     				brr[j++] = arr[i].value; 
     		 }
     	 }
-    		 if(confirm("你确定要删除"+j+"条记录吗")){
-     		 	document.location="${pageContext.request.contextPath }/video/deleteAllVideo.action?brr="+brr;
-     		 }
+    	 
+    	
+        	 $.confirm({
+        		    title: '全部删除',
+        		    content: 'Simple confirm!',
+        		    buttons: {
+        		               确认删除 : function () {
+        		        	document.location="${pageContext.request.contextPath }/admin/video/deleteAllVideo.action?brr="+brr;
+        		        },
+        		             取消: function () {
+        		         
+        		        },
+        		        somethingElse: {
+        		            text: 'Something else',
+        		            btnClass: 'btn-blue',
+        		            keys: ['enter', 'shift'],
+        		            action: function(){
+        		                $.alert('Something else?');
+        		            }
+        		        }
+        		    }
+        		});
+        		                            
+         
+        
+    		 /* if(confirm("你确定要删除"+j+"条记录吗")){
+     		 	document.location="${pageContext.request.contextPath }/admin/video/deleteAllVideo.action?brr="+brr; */
+     		 //}
     	 }
-	  
+	   
      
+     
+	   
+	   
 	
 	
     </script>
@@ -89,13 +125,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
           <ul class="nav navbar-nav">
             <li class="active"><a  href="#">视频管理</a></li>
-            <li ><a href="${pageContext.request.contextPath }/speaker/speakerList.action">主讲人管理</a></li>
-            <li><a href="${pageContext.request.contextPath }/course/courseList.action">课程管理</a></li>
-            <li><a href="${pageContext.request.contextPath }/course/seeCourseTimes.action">统计分析</a></li>
+            <li ><a href="${pageContext.request.contextPath }/admin/speaker/speakerList.action">主讲人管理</a></li>
+            <li><a href="${pageContext.request.contextPath }/admin/course/courseList.action">课程管理</a></li>
+            <li><a href="${pageContext.request.contextPath }/admin/course/seeCourseTimes.action">统计分析</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right">
             	 <li><a href="#">${user.loginName }</a></li>
-            	 <li><a href="${pageContext.request.contextPath }/index.jsp" onclick="" target="_blank" class="glyphicon glyphicon-log-out"></a></li>
+            	 <li><a href="${pageContext.request.contextPath }/admin/user/indexout.action" onclick="" target="_blank" class="glyphicon glyphicon-log-out"></a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
       	</div><!-- /.container-fluid -->
@@ -110,9 +146,8 @@
   	
   	<div class="body">
 		<div style="width: 70%" >
-		
-			<form action="${pageContext.request.contextPath }/video/videoList.action">
-			<a href="${pageContext.request.contextPath }/video/addVideo.action" class="btn btn-primary" >添加视频</a>&nbsp;&nbsp;
+			<form action="${pageContext.request.contextPath }/admin/video/videoList.action">
+			<a href="${pageContext.request.contextPath }/admin/video/addVideo.action" class="btn btn-primary" >添加视频</a>&nbsp;&nbsp;
 		       <!-- <button class="btn btn-primary" type="button">
                                                    批量删除 <a class="btn btn-primary" onclick="deletevideo()"><span class="badge" id="span">0</span></a>
                </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
@@ -170,8 +205,8 @@
   					<td>${mm.courseName}</td>
   					<td>${mm.videoLength}</td>
   					<td>${mm.videoPlayTimes}</td>
-  					<td><a class="glyphicon glyphicon-edit" href="${pageContext.request.contextPath }/video/updateVideo.action?id=${mm.id }"></a></td>
-  				<%-- 	<td><a class="glyphicon glyphicon-trash" href="${pageContext.request.contextPath }/video/deleteVideo.action?id=${mm.id }"></a></td>  --%>
+  					<td><a class="glyphicon glyphicon-edit" href="${pageContext.request.contextPath }/admin/video/updateVideo.action?id=${mm.id }"></a></td>
+  				<%-- 	<td><a class="glyphicon glyphicon-trash" href="${pageContext.request.contextPath }/admin/video/deleteVideo.action?id=${mm.id }"></a></td>  --%>
   				<td>
   				<a class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#myModal${mm.id }" ></a>
 					<!-- Modal -->		
@@ -185,7 +220,7 @@
                           <div class="modal-body">确认删除么</div>
       						<div class="modal-footer">
        							 <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
-		                     <a class="btn btn-primary" href="${pageContext.request.contextPath }/video/deleteVideo.action?id=${mm.id }" >确定</a>
+		                     <a class="btn btn-primary" href="${pageContext.request.contextPath }/admin/video/deleteVideo.action?id=${mm.id }" >确定</a>
 						      </div>
 						    </div>
 						  </div>
@@ -199,7 +234,7 @@
   	</div>
   	<div class="body">
   		<div style="width: 70%">
-  		        <lyb:page url="${pageContext.request.contextPath }/video/videoList.action"></lyb:page>
+  		        <lyb:page url="${pageContext.request.contextPath }/admin/video/videoList.action"></lyb:page>
         </div>
   	</div>
 	</body>
