@@ -11,6 +11,7 @@ import com.zhiyou100.video.model.Speaker;
 import com.zhiyou100.video.model.Subject;
 import com.zhiyou100.video.model.Video;
 import com.zhiyou100.video.service.FrontCourseService;
+import com.zhiyou100.video.utils.SecondToDate;
 
 @Controller
 public class frontCourse {
@@ -23,6 +24,11 @@ public class frontCourse {
     	  List<Course> list =  fcs.selectCourse(subjectId);
     	  for(Course c:list){
     		List<Video> mm = fcs.selectVideo(c.getId());
+    		 for(Video b:mm){
+    			int seconds = b.getVideoLength();
+    			String sb = SecondToDate.ToDate(seconds);  //把秒转换成时分秒
+                b.setVideoLengthstr(sb.toString());
+    		 }
     		c.setVideoList(mm);
     	  } 
     	  
@@ -30,7 +36,7 @@ public class frontCourse {
     	 // md.addAttribute("subjectId", subjectId);
     	  md.addAttribute("courses", list);
     	  md.addAttribute("subject", s);
-    	  //System.out.println(list);
+    	 // System.out.println(list);
     	  return "/front/course/index"; 
        }
        
@@ -60,7 +66,10 @@ public class frontCourse {
  	    md.addAttribute("course", ss);
  	    List<Video> mm = fcs.selectVideo(v.getSpeakerId());
  	    for(Video c:mm){
-   		c.setSpeakerName(S.getSpeakerName());
+ 	    	int seconds = c.getVideoLength();
+ 	    	  String sb = SecondToDate.ToDate(seconds); //把秒转换成时分秒
+               c.setVideoLengthstr(sb.toString());
+   		       c.setSpeakerName(S.getSpeakerName());
    	    } 
  	    
  	    md.addAttribute("videoList", mm);
